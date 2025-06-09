@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Page</title>
+
+    <link href="/styles.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="form-container">
+        <h1>Welcome Admin</h1>
+
+        <h2>Insert New Product</h2>
+
+        <form th:action="@{/addProduct}" th:object="${product}" method="post" class="row g-3" enctype="multipart/form-data">
+            <label>Name</label><br>
+            <input th:field="*{name}" class="form-control" required>
+            <small class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small><br><br>
+
+            <label>Desciption</label><br>
+            <input th:field="*{description}" class="form-control" required>
+            <small class="text-danger" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></small><br><br>
+
+            <label>Price</label><br>
+            <input th:field="*{price}" class="form-control" required>
+            <small class="text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></small><br><br>
+
+            <label>Stock</label><br>
+            <input th:field="*{stock}" class="form-control" required>
+            <small class="text-danger" th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}"></small><br><br>
+
+            <label>Image</label><br>
+            <input type="file" name="imageFile" class="form-control" required>
+            <small class="text-danger" th:if="${#fields.hasErrors('image')}" th:errors="*{image}"></small><br><br>
+
+            <label>Category</label><br>
+            <input th:field="*{category}" class="form-control" required>
+            <small class="text-danger" th:if="${#fields.hasErrors('category')}" th:errors="*{category}"></small><br><br>
+
+            <button class="index btn-primary">Add Product</button><br>
+            <a th:href="@{/admin/products}" class="index btn-secondary">Go to database</a>
+        </form>
+
+        <a th:href="@{/logout}">Logout</a>
+    </div>
+</body>
+</html>
